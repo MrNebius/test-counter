@@ -1,0 +1,5 @@
+<div>Current Count A: {{ (count$ | async).a }}</div>
+<div>Current Count B: {{ (count$ | async).b }}</div>
+
+<button (click)="start()">start</button>
+<button (click)="stop()">stop</button>

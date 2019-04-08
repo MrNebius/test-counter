@@ -4,14 +4,20 @@ import { StoreModule } from '@ngrx/store';
 import { counterReducer } from './store/reducers/counter.reducer';
 
 import { AppComponent } from './app.component';
+import { CounterComponent } from './counter/counter.component';
+import { EffectsModule } from '@ngrx/effects';
+import { AppEffects } from './app.effects';
+import { InputComponent } from './input/input.component';
 
 @NgModule({
   declarations: [
-    AppComponent
-  ],
+    AppComponent,
+    CounterComponent,
+    InputComponent],
   imports: [
     BrowserModule,
-    StoreModule.forRoot({ count: counterReducer })
+    StoreModule.forRoot({ count: counterReducer }),
+    EffectsModule.forRoot([AppEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]
