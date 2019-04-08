@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable, interval, Subject } from 'rxjs';
-import { Change, Increase, Decrease } from '../store/actions/counter.actions';
-import {takeUntil} from 'rxjs/operators';
+import { Change, Increase, Decrease, Reset } from '../store/actions/counter.actions';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-counter',
@@ -33,5 +33,10 @@ export class CounterComponent {
 
   stop() {
     this.destroySubscription.next(null);
+  }
+
+  reset() {
+    this.stop();
+    this.store.dispatch(new Reset());
   }
 }

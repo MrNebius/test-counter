@@ -28,6 +28,9 @@ export function counterReducer(state = initialState, action: Action) {
         b: state.b - 1
       };
 
+    case  ActionTypes.Reset:
+      return initialState;
+
     default:
       return state;
   }
