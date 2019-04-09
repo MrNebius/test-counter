@@ -1,10 +1,9 @@
 <div class="wrapper">
-  <input #number (keyup)="0" type="number">
+  <input [formControl]="number" (keyup)="0" type="number">
   <div class="with-border"
     [ngClass]="{
     'red': number.value < 0,
     'blue': number.value > 0
-
     }">
     {{number.value}}
   </div>

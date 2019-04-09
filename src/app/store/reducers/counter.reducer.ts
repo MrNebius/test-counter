@@ -11,7 +11,7 @@ export const initialState: State = {
   b: 10
 };
 
-export function counterReducer(state = initialState, action: Action) {
+export function counterReducer(state: State = initialState, action: Action): State {
   switch (action.type) {
     case ActionTypes.Change:
       return state;

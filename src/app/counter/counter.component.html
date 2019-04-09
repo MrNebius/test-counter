@@ -1,6 +1,6 @@
-<div>Current Count A: {{ (count$ | async).a }}</div>
-<div>Current Count B: {{ (count$ | async).b }}</div>
+<div id="a">Current Count A: {{ (count$ | async).a }}</div>
+<div id="b">Current Count B: {{ (count$ | async).b }}</div>
 
-<button (click)="start()">start</button>
-<button (click)="stop()">stop</button>
-<button (click)="reset()">reset</button>
+<button id="start-btn" (click)="start()">start</button>
+<button id="stop-btn" (click)="stop()">stop</button>
+<button id="reset-btn" (click)="reset()">reset</button>

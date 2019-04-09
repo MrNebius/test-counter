@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { Observable, interval, Subject } from 'rxjs';
-import { Change, Increase, Decrease, Reset } from '../store/actions/counter.actions';
-import { takeUntil } from 'rxjs/operators';
+import { Observable, interval, Subscription } from 'rxjs';
+import { Change, Reset } from '../store/actions/counter.actions';
 
 @Component({
   selector: 'app-counter',
@@ -16,23 +15,17 @@ export class CounterComponent {
     this.count$ = store.pipe(select('count'));
   }
 
-  private destroySubscription: Subject<any> = new Subject<any>();
-  private source = interval(1000).pipe(takeUntil(this.destroySubscription));
-
-  increase() {
-    this.store.dispatch(new Increase());
-  }
-
-  decrease() {
-    this.store.dispatch(new Decrease());
-  }
+  subscription: Subscription;
+  interval$ = interval(1000);
 
   start() {
-    this.source.subscribe(() => this.store.dispatch(new Change()));
+    this.subscription = this.interval$.subscribe(() => this.store.dispatch(new Change()));
   }
 
   stop() {
-    this.destroySubscription.next(null);
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
   reset() {

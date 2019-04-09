@@ -8,16 +8,19 @@ import { CounterComponent } from './counter/counter.component';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
 import { InputComponent } from './input/input.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     CounterComponent,
-    InputComponent],
+    InputComponent
+  ],
   imports: [
     BrowserModule,
     StoreModule.forRoot({ count: counterReducer }),
-    EffectsModule.forRoot([AppEffects])
+    EffectsModule.forRoot([AppEffects]),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
